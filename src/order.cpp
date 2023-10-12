@@ -39,21 +39,21 @@ std::time_t Order::getTimestamp() const
 void Order::reduceQuantity(int amount)
 {
 	if (amount > 0 && amount <= quantity)
-    {
+    	{
 		quantity -= amount;
-    }
-    else
-    {
-        throw std::out_of_range{"Amount out of range."};
-    }
+    	}
+    	else
+    	{
+        	throw std::out_of_range{"Amount out of range."};
+    	}
 }
 
 OrderType Order::getOrdertype() const {
-    return ordertype;
+    	return ordertype;
 }
 
 void Order::setOrderType(OrderType type) {
-    ordertype = type;
+    	ordertype = type;
 }
 
 std::string MarketOrder::getOrderType() const
@@ -71,11 +71,11 @@ OrderFactory::~OrderFactory()
 }
 
 std::unique_ptr<Order> MarketOrderFactory::createOrder(int trader_id, double price, int quantity) {
-    return std::make_unique<MarketOrder>(trader_id, price, quantity);
+    	return std::make_unique<MarketOrder>(trader_id, price, quantity);
 }
 
 std::unique_ptr<Order> LimitOrderFactory::createOrder(int trader_id, double price, int quantity) {
-    return std::make_unique<LimitOrder>(trader_id, price, quantity);
+    	return std::make_unique<LimitOrder>(trader_id, price, quantity);
 }
 
 OrderMatchingStrategy::~OrderMatchingStrategy()
@@ -83,19 +83,19 @@ OrderMatchingStrategy::~OrderMatchingStrategy()
 }
 
 void PriceTimeOrderMatchingStrategy::matchOrders(std::vector<std::shared_ptr<Order>>& buyOrders, std::vector<std::shared_ptr<Order>>& sellOrders) {
-    std::vector<std::shared_ptr<Order>> matchedOrders;
+    	std::vector<std::shared_ptr<Order>> matchedOrders;
 
-    for (auto sellOrder = sellOrders.begin(); sellOrder != sellOrders.end(); ++sellOrder) {
-        for (auto it = buyOrders.begin(); it != buyOrders.end();) {
-            if ((*sellOrder)->getPrice() <= (*it)->getPrice()) {
-                matchedOrders.push_back(*it);
-                it = buyOrders.erase(it); // Remove the matched buy order
-            } else {
-                ++it;
-            }
-        }
-    }
+    	for (auto sellOrder = sellOrders.begin(); sellOrder != sellOrders.end(); ++sellOrder) {
+        	for (auto it = buyOrders.begin(); it != buyOrders.end();) {
+            		if ((*sellOrder)->getPrice() <= (*it)->getPrice()) {
+                		matchedOrders.push_back(*it);
+                		it = buyOrders.erase(it); // Remove the matched buy order
+            		} else {
+                		++it;
+            		}
+        	}
+    	}
 
-    // Update the buyOrders vector with remaining unmatched orders
-    buyOrders.insert(buyOrders.end(), matchedOrders.begin(), matchedOrders.end());
+    	// Update the buyOrders vector with remaining unmatched orders
+    	buyOrders.insert(buyOrders.end(), matchedOrders.begin(), matchedOrders.end());
 }
