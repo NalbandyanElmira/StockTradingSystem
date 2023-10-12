@@ -1,0 +1,3 @@
+/mnt/c/users/user/onedrive/desktop/stocktradingsystem/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/users/user/onedrive/desktop/stocktradingsystem/build/CMakeFiles/edit_cache.dir
+/mnt/c/users/user/onedrive/desktop/stocktradingsystem/build/CMakeFiles/my_app.dir
