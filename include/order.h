@@ -22,8 +22,8 @@ public:
 	int getQuantity() const;
 	std::time_t getTimestamp() const;
 	void reduceQuantity(int);
-    OrderType getOrdertype() const;
-    void setOrderType(OrderType);
+    	OrderType getOrdertype() const;
+    	void setOrderType(OrderType);
 private:
 	int traider_id;
 	double price;
@@ -48,29 +48,29 @@ public:
 
 class OrderFactory {
 public:
-    virtual std::unique_ptr<Order> createOrder(int, double, int) = 0;
-    virtual ~OrderFactory();
+    	virtual std::unique_ptr<Order> createOrder(int, double, int) = 0;
+    	virtual ~OrderFactory();
 };
 
 class MarketOrderFactory : public OrderFactory {
 public:
-    std::unique_ptr<Order> createOrder(int, double, int) override;
+    	std::unique_ptr<Order> createOrder(int, double, int) override;
 };
 
 class LimitOrderFactory : public OrderFactory {
 public:
-    std::unique_ptr<Order> createOrder(int, double, int) override;
+    	std::unique_ptr<Order> createOrder(int, double, int) override;
 };
 
 class OrderMatchingStrategy {
 public:
-    virtual void matchOrders(std::vector<std::shared_ptr<Order>>&, std::vector<std::shared_ptr<Order>>&) = 0;
-    virtual ~OrderMatchingStrategy();
+    	virtual void matchOrders(std::vector<std::shared_ptr<Order>>&, std::vector<std::shared_ptr<Order>>&) = 0;
+    	virtual ~OrderMatchingStrategy();
 };
 
 class PriceTimeOrderMatchingStrategy : public OrderMatchingStrategy {
 public:
-    void matchOrders(std::vector<std::shared_ptr<Order>>&, std::vector<std::shared_ptr<Order>>&) override;
+    	void matchOrders(std::vector<std::shared_ptr<Order>>&, std::vector<std::shared_ptr<Order>>&) override;
 };
 
 } // StockTradingSystem
