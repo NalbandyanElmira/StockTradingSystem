@@ -36,7 +36,7 @@ The project uses the following design patterns:
 
 To run the Stock Trading System application, follow these steps:
 
-1. Clonee repository.
+1. Clone repository.
    
    ```bash
    git clone https://github.com/NalbandyanElmira/StockTradingSystem
