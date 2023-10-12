@@ -33,6 +33,7 @@ public:
 	const std::vector<std::shared_ptr<Order>>& getOrders() const;
 	void addStock(const Stock&);
 	std::vector<Stock> getStocks() const;
+	~Trader();
 private:
 	static int id_counter;
 	int id;
