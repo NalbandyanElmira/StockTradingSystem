@@ -13,10 +13,10 @@ namespace StockTradingSystem
 class TraderException : public std::exception
 {
 public:
-    TraderException(const std::string&);
-    virtual const char* what() const noexcept override;
+    	TraderException(const std::string&);
+    	virtual const char* what() const noexcept override;
 private:
-    std::string message;
+    	std::string message;
 };
 
 
