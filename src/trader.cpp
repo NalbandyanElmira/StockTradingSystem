@@ -116,3 +116,9 @@ std::vector<Stock> Trader::getStocks() const
 {
     	return stocks;
 }
+
+Trader::~Trader()
+{
+    	delete orderFactory;
+    	delete orderBook;
+}
